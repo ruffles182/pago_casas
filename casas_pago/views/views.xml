@@ -1,0 +1,156 @@
+<odoo>
+    <data>
+        <!-- casas -->
+        <record id="view_casa_kanban" model="ir.ui.view">
+            <field name="name">view.casas.pago.casa.kanban</field>
+            <field name="model">casas_pago.casa</field>
+            <field name="arch" type="xml">
+                <kanban class="oe_background_grey o_kanban_dashboard o_salesteam_kanban o_project_kanban " create="0">
+                    <field name="calle"/>
+                    <field name="numero"/>
+                    <field name="estatus"/>
+                    <templates>
+                        <span t-name="kanban-box">                            <!-- Use <t> tag instead of <span> for color change -->
+                            <div>
+                                <div class="o_project_kanban_main">
+                                    <center>
+                                        <br />
+                                        <h2 style="font-weight:bold">
+                                            <field name="calle"/>
+                                        </h2>
+                                        <h1>
+                                            <field name="numero"/>
+                                        </h1>
+
+                                        <t t-if="record.estatus.raw_value == true">
+                                            <div style="background-color:#58dd09;color:#ffffff">
+                                                <br />
+                                                <h2>Pagado</h2>
+                                                <br />
+                                            </div>
+                                        </t>
+                                        <t t-if="record.estatus.raw_value == false">
+                                            <div style="background-color:#FF7171;color:#ffffff">
+                                                <br />
+                                                <h2>Deudor</h2>
+                                                <br />
+                                            </div>
+                                        </t>
+                                        <br />
+                                    </center>
+                                </div>
+                            </div>
+                        </span>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_casa_tree" model="ir.ui.view">
+            <field name="name">view.casas.pago.casa.tree</field>
+            <field name="model">casas_pago.casa</field>
+            <field name="arch" type="xml">
+                <tree string="Casa">
+                    <field name="calle"/>
+                    <field name="numero"/>
+                    <field name="estatus"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_casa_form" model="ir.ui.view">
+            <field name="name">view.casas.pago.casa.form</field>
+            <field name="model">casas_pago.casa</field>
+            <field name="arch" type="xml">
+                <form name="casa_form">
+                    <sheet>
+                        <div class="oe_title">
+                            <group>
+                                <field name="calle"/>
+                            </group>
+                            <group>
+                                <field name="numero"/>
+                                <field name="estatus"/>
+                            </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_casa_views" model="ir.actions.act_window">
+            <field name="name">Casa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">casas_pago.casa</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Casas
+                </p>
+                <p>
+                Agregue una
+                </p>
+            </field>
+        </record>
+
+        <record id="casas_search_view" model="ir.ui.view">
+            <field name="name">Casas Search View</field>
+            <field name="model">casas_pago.casa</field>
+            <field name="arch" type="xml">
+                <search string="Search Student">
+                   <field name="calle"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- calle -->
+        <record id="view_calle_tree" model="ir.ui.view">
+            <field name="name">view.casas.pago.calle.tree</field>
+            <field name="model">casas_pago.calle</field>
+            <field name="arch" type="xml">
+                <tree string="Casa">
+                    <field name="nombre"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_calle_form" model="ir.ui.view">
+            <field name="name">view.casas.pago.calle.form</field>
+            <field name="model">casas_pago.calle</field>
+            <field name="arch" type="xml">
+                <form name="calle_form">
+                    <sheet>
+                        <div class="oe_title">
+                            <group>
+                                <field name="nombre"/>
+                            </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_calle_views" model="ir.actions.act_window">
+            <field name="name">Calle</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">casas_pago.calle</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Calles
+                </p>
+                <p>
+                Agregue una
+                </p>
+            </field>
+        </record>
+
+        <!-- menus -->
+        <menuitem id="menu_casa_root" name="Pagados" sequence="10" groups="base.group_user"/>
+        <menuitem id="menu_casa_categ" name="Casas" parent="menu_casa_root" sequence="1"/>
+        <menuitem id="menu_casa" name="Casas" parent="menu_casa_categ" action="action_casa_views" sequence="1"/>
+        <menuitem id="menu_calle" name="Calle" parent="menu_casa_categ" action="action_calle_views" sequence="2"/>
+    </data>
+</odoo>
