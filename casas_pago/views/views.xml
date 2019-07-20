@@ -75,9 +75,8 @@
                                 <field name="calle"/>
                             </group>
                             <group>
-                                <p><field name="encargado"/></p>
-                                <br />
-                                <p><field name="telefono"/></p>
+                                <field name="encargado"/>
+                                <field name="telefono"/>
                             </group>
                             <group>
                                 <field name="numero"/>
