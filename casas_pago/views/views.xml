@@ -21,7 +21,11 @@
                                         <h1>
                                             <field name="numero"/>
                                         </h1>
-
+                                        <div>
+                                            <field name="encargado"/>
+                                            <br/>
+                                            <field name="telefono"/>
+                                        </div>
                                         <t t-if="record.estatus.raw_value == true">
                                             <div style="background-color:#58dd09;color:#ffffff">
                                                 <br />
@@ -53,6 +57,8 @@
                 <tree string="Casa">
                     <field name="calle"/>
                     <field name="numero"/>
+                    <field name="encargado"/>
+                    <field name="telefono"/>
                     <field name="estatus"/>
                 </tree>
             </field>
@@ -69,6 +75,11 @@
                                 <field name="calle"/>
                             </group>
                             <group>
+                                <p><field name="encargado"/></p>
+                                <br />
+                                <p><field name="telefono"/></p>
+                            </group>
+                            <group>
                                 <field name="numero"/>
                                 <field name="estatus"/>
                             </group>
@@ -83,7 +94,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">casas_pago.casa</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">kanban,form,tree</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                 Casas
