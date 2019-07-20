@@ -12,7 +12,7 @@ class Casa(models.Model):
     _name = 'casas_pago.casa'
 
     numero = fields.Integer('Número')
-    calle = fields.Many2one('casas_pago.calle', 'Casa')
+    calle = fields.Many2one('casas_pago.calle', 'Calle')
     estatus = fields.Boolean(string='Pagado')
     encargado = fields.Char('nombre contacto')
     telefono = fields.Char(string='Teléfono', size=10)
